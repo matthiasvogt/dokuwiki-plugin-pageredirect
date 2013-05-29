@@ -18,7 +18,7 @@ require_once(DOKU_PLUGIN.'action.php');
 class action_plugin_pageredirect extends DokuWiki_Action_Plugin {
 	function register(&$controller) {
 		$controller->register_hook('DOKUWIKI_STARTED', 'BEFORE', $this, 'handle_pageredirect_redirect');
-		$controller->register_hook('TPL_ACT_RENDER', 'BEFORE', $this, 'handle_pageredirect_note');
+		$controller->register_hook('TPL_ACT_RENDER', $this->getConf('show_note'), $this, 'handle_pageredirect_note');
 		$controller->register_hook('PARSER_METADATA_RENDER','BEFORE', $this, 'handle_pageredirect_metadata');
 
 		// This plugin goes first
